@@ -3,6 +3,7 @@ const dotenv       = require("dotenv");
 const cors         = require("cors");
 const cookieParser = require("cookie-parser");
 const connectDB    = require("./config/db");
+const path         = require("path");
 
 dotenv.config();
 connectDB();
@@ -14,14 +15,21 @@ app.use(express.json());
 app.use(cookieParser());
 
 // ── Allow BOTH port 3000 and 5173 (Vite default) ─────────────
+const allowedOrigins = [
+  "https://movieapp-5n6c.onrender.com",
+  "http://localhost:3000",
+  "http://localhost:5173",
+  "http://127.0.0.1:5173",
+  "http://127.0.0.1:3000",
+];
+
 app.use(cors({
-  origin: [
-    "https://movieapp-5n6c.onrender.com",
-    "http://localhost:3000",
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://127.0.0.1:3000",
-  ],
+  origin: (origin, callback) => {
+    // allow requests with no origin (mobile apps, curl, Postman)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) return callback(null, true);
+    callback(new Error(`CORS blocked: ${origin}`));
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -38,27 +46,12 @@ app.use("/api/users",  userRoutes);
 app.use("/api/admin",  adminRoutes);
 app.use("/api/movies", movieRoutes);
 
-// ─── Base Route ───────────────────────────────────────────────
-app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "🎬 Movie Platform API is running!",
-    version: "1.0.0",
-    endpoints: {
-      auth:   "/api/auth",
-      users:  "/api/users",
-      movies: "/api/movies",
-      admin:  "/api/admin",
-    },
-  });
-});
+// ─── Serve React Frontend ─────────────────────────────────────
+app.use(express.static(path.join(__dirname, "public")));
 
-// ─── 404 Handler ──────────────────────────────────────────────
-app.use((req, res) => {
-  res.status(404).json({
-    success: false,
-    message: `Route ${req.originalUrl} not found`,
-  });
+// ─── Catch-all: serve index.html for any non-API route ────────
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 // ─── Global Error Handler ─────────────────────────────────────
