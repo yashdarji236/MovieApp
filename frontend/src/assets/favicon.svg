@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Red rounded square — matches the navbar logo box exactly -->
+  <rect width="64" height="64" rx="13" fill="#f20d18"/>
+
+  <!-- movie_filter Material Icon reimplemented as clean SVG paths -->
+  <!-- Outer film frame -->
+  <rect x="11" y="18" width="42" height="28" rx="3" fill="white" opacity="0.15"/>
+
+  <!-- Left sprocket holes -->
+  <rect x="11" y="22" width="7" height="5" rx="1.5" fill="white"/>
+  <rect x="11" y="31" width="7" height="5" rx="1.5" fill="white"/>
+  <rect x="11" y="37" width="7" height="5" rx="1.5" fill="white"/>
+
+  <!-- Right sprocket holes -->
+  <rect x="46" y="22" width="7" height="5" rx="1.5" fill="white"/>
+  <rect x="46" y="31" width="7" height="5" rx="1.5" fill="white"/>
+  <rect x="46" y="37" width="7" height="5" rx="1.5" fill="white"/>
+
+  <!-- Film content area (inner screen) -->
+  <rect x="20" y="18" width="24" height="28" fill="white" opacity="0.1"/>
+  <line x1="20" y1="18" x2="20" y2="46" stroke="white" stroke-width="1.5" opacity="0.5"/>
+  <line x1="44" y1="18" x2="44" y2="46" stroke="white" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Play arrow -->
+  <polygon points="26,24 26,40 42,32" fill="white"/>
+</svg>
