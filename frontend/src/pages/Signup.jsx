@@ -25,7 +25,7 @@ export default function Signup() {
     console.log("Sending signup request:", form);
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/signup", {
+      const response = await fetch(`${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}/api/auth/signup`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

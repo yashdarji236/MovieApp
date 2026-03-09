@@ -16,6 +16,7 @@ app.use(cookieParser());
 // ── Allow BOTH port 3000 and 5173 (Vite default) ─────────────
 app.use(cors({
   origin: [
+    "https://movieapp-5n6c.onrender.com",
     "http://localhost:3000",
     "http://localhost:5173",
     "http://127.0.0.1:5173",

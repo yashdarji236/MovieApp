@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { FALLBACK_POSTER } from "../services/tmdb";
 
-const BACKEND = "http://localhost:5000";
+const BACKEND = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`
 
 // ─── Time helper ───────────────────────────────────────────────
 function getTimeAgo(dateStr) {

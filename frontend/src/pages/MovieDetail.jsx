@@ -10,7 +10,7 @@ import {
   IMG_W500, IMG_ORIGINAL, FALLBACK_POSTER, FALLBACK_BACKDROP,
 } from "../services/tmdb";
 
-const BACKEND = "http://localhost:5000";
+const BACKEND = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`
 
 /* ── Toast ── */
 const Toast = ({ msg, type }) => !msg ? null : (

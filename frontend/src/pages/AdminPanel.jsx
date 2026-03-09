@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IMG_W500, FALLBACK_POSTER } from "../services/tmdb";
 
-const BACKEND = "http://localhost:5000";
+const BACKEND = `${import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"}`;
 
 // ─── Helpers ───────────────────────────────────────────────────
 const api = async (path, method = "GET", body, token) => {
