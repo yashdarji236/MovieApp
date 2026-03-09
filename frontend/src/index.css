@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap');
+
+@import "tailwindcss";
+
+/* ─── Tailwind v4 Theme Config ───────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-primary:   #E50914;
+  --color-secondary: #F5A623;
+  --color-dark:      #1a0a0a;
+  --color-darker:    #0d0404;
+  --color-card:      #2a1010;
+  --color-border:    #3d1515;
+
+  /* Fonts */
+  --font-heading: 'Bebas Neue', cursive;
+  --font-body:    'DM Sans', sans-serif;
+
+  /* Animations */
+  --animate-shimmer: shimmer 1.5s infinite;
+  --animate-fadeIn:  fadeIn 0.5s ease-in-out;
+  --animate-slideUp: slideUp 0.4s ease-out;
+  --animate-scaleIn: scaleIn 0.3s ease-out;
+
+  /* Keyframes */
+  @keyframes shimmer {
+    0%   { background-position: -200% 0; }
+    100% { background-position:  200% 0; }
+  }
+  @keyframes fadeIn {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  @keyframes slideUp {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes scaleIn {
+    0%   { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+}
+
+/* ─── Base Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: #1a0a0a;
+  color: #ffffff;
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Custom Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #0d0404; }
+::-webkit-scrollbar-thumb { background: #E50914; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #ff1a1a; }
+
+/* ─── Shimmer Skeleton ───────────────────────────────────────── */
+.shimmer {
+  background: linear-gradient(90deg, #2a1010 25%, #3d1515 50%, #2a1010 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Horizontal Scroll Row ──────────────────────────────────── */
+.scroll-row {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+.scroll-row::-webkit-scrollbar { display: none; }
