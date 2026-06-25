@@ -16,7 +16,8 @@ app.use(cookieParser());
 
 // ── Allow BOTH port 3000 and 5173 (Vite default) ─────────────
 const allowedOrigins = [
-  "https://movieapp-5n6c.onrender.com",
+  "https://movie-app-eta-blue.vercel.app",
+  "https://movieapp-pbt3.onrender.com",
   "http://localhost:3000",
   "http://localhost:5173",
   "http://127.0.0.1:5173",
